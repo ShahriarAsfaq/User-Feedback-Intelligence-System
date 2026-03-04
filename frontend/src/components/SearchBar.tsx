@@ -19,7 +19,14 @@ const SearchBar = ({ onSearch }: Props) => {
       }
     };
 
+    // Fetch on mount
     fetchCategories();
+
+    // Set interval to check for updates every 5 seconds
+    const interval = setInterval(fetchCategories, 5000);
+
+    // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
