@@ -1,8 +1,27 @@
+import { useEffect, useState } from "react";
+import { getCategories } from "../api/feedback.api";
+
 interface Props {
   onSearch: (filters: any) => void;
 }
 
 const SearchBar = ({ onSearch }: Props) => {
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const cats = await getCategories();
+        console.log("Fetched categories:", cats);
+        setCategories(cats);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="flex flex-wrap gap-4 items-center">
 
@@ -18,14 +37,20 @@ const SearchBar = ({ onSearch }: Props) => {
         onChange={(e) => onSearch({ category: e.target.value })}
       >
         <option value="">All Categories</option>
-        <option value="Bug">Bug</option>
-        <option value="Feature Request">Feature Request</option>
-        <option value="Complaint">Complaint</option>
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
+        ))}
       </select>
 
       <select
         className="border rounded-lg p-2"
-        onChange={(e) => onSearch({ priority: e.target.value })}
+        onChange={(e) => {
+          const priority = e.target.value;
+          console.log("Priority selected:", priority);
+          onSearch({ priority });
+        }}
       >
         <option value="">All Priority</option>
         <option value="Low">Low</option>

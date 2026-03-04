@@ -28,6 +28,10 @@ Return ONLY valid JSON:
 }
 
 Feedback: ${message}
+the category should be a single word describing the feedback (e.g. "UI", "Performance", "Feature Request", "BUG").
+the priority should be one of "Low", "Medium", or "High" based on the urgency and impact of the feedback.
+the sentiment should be one of "Positive", "Negative", or "Neutral" based on the tone of the feedback.
+the team should be a single word indicating which team should handle the feedback (e.g. "Frontend", "Backend", "QA").
 `;
 
   const response = await model.invoke(prompt);

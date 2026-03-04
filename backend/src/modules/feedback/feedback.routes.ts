@@ -23,4 +23,18 @@ router.post(
  */
 router.get("/", controller.getAll);
 
+/**
+ * @route   GET /api/feedback/categories
+ * @desc    Get all unique categories
+ * @access  Public
+ */
+router.get("/categories", controller.getCategories);
+
+/**
+ * @route   DELETE /api/feedback/:id
+ * @desc    Delete feedback by ID
+ * @access  Public
+ */
+router.delete("/:id", controller.deleteFeedback);
+
 export default router;

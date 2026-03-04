@@ -10,3 +10,14 @@ export const getAll = async (req: Request, res: Response) => {
   const result = await service.getFeedbacks(req.query);
   res.json(result);
 };
+
+export const getCategories = async (req: Request, res: Response) => {
+  const result = await service.getCategories();
+  res.json(result);
+};
+
+export const deleteFeedback = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await service.deleteFeedback(id);
+  res.json(result);
+};

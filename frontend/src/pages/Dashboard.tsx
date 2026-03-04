@@ -35,6 +35,7 @@ const Dashboard = () => {
         <div className="bg-white rounded-2xl shadow p-6 mb-6">
           <SearchBar
             onSearch={(newFilters) => {
+              console.log("Search invoked with filters:", newFilters);
               setFilters(newFilters);
               fetchData(newFilters);
             }}
@@ -42,7 +43,7 @@ const Dashboard = () => {
         </div>
 
         <div className="bg-white rounded-2xl shadow p-6">
-          <FeedbackList feedbacks={feedbacks} />
+          <FeedbackList feedbacks={feedbacks} onDelete={() => fetchData(filters)} />
         </div>
 
       </div>

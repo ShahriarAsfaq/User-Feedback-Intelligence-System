@@ -15,6 +15,19 @@ export const createFeedback = async (data: {
 };
 
 export const getFeedbacks = async (params: any) => {
+  console.log("API call getFeedbacks with params:", params);
   const res = await api.get<Feedback[]>("/feedback", { params });
+  console.log("API response priorities:", res.data.map((f) => f.priority));
+  console.log("API :", res.data);
+  return res.data;
+};
+
+export const getCategories = async () => {
+  const res = await api.get<string[]>("/feedback/categories");
+  return res.data;
+};
+
+export const deleteFeedback = async (id: string) => {
+  const res = await api.delete(`/feedback/${id}`);
   return res.data;
 };
