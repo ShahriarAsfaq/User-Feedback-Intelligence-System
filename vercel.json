@@ -1,5 +1,5 @@
 {
-  "projects": [
+  "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
@@ -9,7 +9,7 @@
       }
     },
     {
-      "src": "backend/package.json",
+      "src": "backend/src/**/*.{ts,js}",
       "use": "@vercel/node"
     }
   ],
