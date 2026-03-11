@@ -1,0 +1,16 @@
+# .dockerignore
+node_modules
+npm-debug.log
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+README.md
+dist
+coverage
+.nyc_output
+.vscode
+.idea
+*.log
+.DS_Store
