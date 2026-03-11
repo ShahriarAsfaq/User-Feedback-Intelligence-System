@@ -1,4 +1,4 @@
-# Dockerfile
+# backend/Dockerfile
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -40,7 +40,7 @@ RUN chown -R nodejs:nodejs /app
 # Switch to non-root user
 USER nodejs
 
-
+# Expose the port your app runs on
 EXPOSE 5000
 
 # Start the application
